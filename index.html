@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>متجر موسيقاتي - لبيع الآلات الموسيقية</title>
     <style>
-        /* التنسيقات العامة المتناسقة مع الألوان الداكنة والأسلوب الأنيق للموقع */
         body {
             background-color: #0b0f19;
             color: #ffffff;
@@ -14,7 +13,6 @@
             padding: 0;
         }
 
-        /* الهيدر والقائمة العلوية */
         header {
             display: flex;
             justify-content: space-between;
@@ -62,8 +60,9 @@
         }
 
         nav a img {
-            width: 18px;
-            height: 18px;
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
         }
 
         .btn-contact {
@@ -82,7 +81,6 @@
             color: #070a12;
         }
 
-        /* البانر الترحيبي الرئيسي */
         .hero-section {
             max-width: 90%;
             margin: 40px auto;
@@ -107,10 +105,10 @@
             margin: 0 auto;
         }
 
-        /* قسم معرض الآلات المعروضة للبيع */
         .products-section {
             max-width: 90%;
             margin: 40px auto;
+            padding-bottom: 100px; /* مساحة للفوتر السفلي */
         }
 
         .section-title {
@@ -143,7 +141,7 @@
 
         .product-card img {
             width: 100%;
-            max-height: 200px;
+            max-height: 180px;
             object-fit: contain;
             border-radius: 8px;
             margin-bottom: 15px;
@@ -178,7 +176,6 @@
             background-color: #008cc4;
         }
 
-        /* الفوتر المتناسق مع سلة المشتريات */
         footer {
             background-color: #070a12;
             border-top: 2px solid #00adef;
@@ -188,16 +185,16 @@
             align-items: center;
             position: fixed;
             bottom: 0;
-            width: 90%;
-            left: 5%;
+            width: 100%;
             box-sizing: border-box;
-            border-radius: 10px 10px 0 0;
+            z-index: 1000;
         }
 
         .cart-status {
             display: flex;
             align-items: center;
             gap: 15px;
+            color: #a0aec0;
         }
 
         .cart-btn {
@@ -220,7 +217,7 @@
 </head>
 <body>
 
-    <!-- الهيدر العلوى بأسماء أيقوناتك المرفوعة تماماً -->
+    <!-- تعديل القائمة العلوية لتطابق أسماء الملفات الصحيحة تماماً -->
     <header>
         <div class="logo-container">
             <img src="الشعار.svg" alt="موسيقاتي" class="logo-img">
@@ -228,56 +225,55 @@
         </div>
         <nav>
             <a href="#"><img src="الرئيسية.png" alt=""> الرئيسية</a>
-            <a href="#"><img src="المجر.svg" alt=""> معرض الآلات</a>
-            <a href="#"><img src="الهدايا.png" alt=""> العروض الخاصة</a>
+            <a href="#"><img src="المتجر.svg" alt=""> معرض الآلات</a>
+            <a href="#"><img src="العروض الخاصة.png" alt=""> العروض الخاصة</a>
             <a href="#"><img src="من نحن.png" alt=""> من نحن</a>
             <button class="btn-contact">تواصل معنا</button>
         </nav>
     </header>
 
-    <!-- البانر الرئيسي المحدث للمحل -->
     <section class="hero-section">
         <h1>مرحباً بكم في متجر موسيقاتي للآلات الموسيقية 🎸</h1>
         <p>بوابتكم الأولى لاستكشاف واقتناء أجود أنواع الآلات الموسيقية الشرقية والغربية مع كفالة حقيقية وصيانة احترافية في الأردن.</p>
     </section>
 
-    <!-- معرض البيع المربوط بالصور المرفوعة لديك -->
+    <!-- ترتيب الكروت لتتناسق مع محتوى صورك المعروضة في الشاشة الحالية -->
     <section class="products-section">
         <h2 class="section-title">أحدث الآلات الموسيقية المتوفرة في المعرض</h2>
         
         <div class="products-grid">
             
-            <!-- الكرت الأول: آلة العود (باستخدام الصورة المرفوعة Picture2.png كمثال لواجهة العرض) -->
+            <!-- الكرت الأول: الإحصائيات أو جدول الأصول -->
             <div class="product-card">
-                <img src="Picture2.png" alt="آلة موسيقية مميزة">
-                <h3>عود شرقي احترافي</h3>
-                <p style="color: #a0aec0; font-size: 14px;">خشب زان نقي، صوت دافئ ورنان لعشاق الطرب الأصيل.</p>
-                <div class="price">350 دينار أردني</div>
-                <button class="btn-buy">إضافة إلى السلة</button>
+                <img src="Picture2.png" alt="إحصائيات المبيعات">
+                <h3>إحصائيات مبيعات الآلات</h3>
+                <p style="color: #a0aec0; font-size: 14px;">بيانات دقيقة توضح الآلات الأكثر طلباً ومبيعاً داخل متجرنا الموسيقي.</p>
+                <div class="price">تقرير دوري</div>
+                <button class="btn-buy">عرض التقرير الكامل</button>
             </div>
 
-            <!-- الكرت الثاني: آلة إضافية -->
+            <!-- الكرت الثاني: واجهة القسم الرئيسي للمتجر -->
             <div class="product-card">
-                <img src="الرئيسية.png" alt="جيتار كلاسيك">
-                <h3>جيتار صوتي كلاسيكي</h3>
-                <p style="color: #a0aec0; font-size: 14px;">أوتار مريحة وهيكل متين ممتاز للمبتدئين والمحترفين.</p>
-                <div class="price">120 دينار أردني</div>
-                <button class="btn-buy">إضافة إلى السلة</button>
+                <img src="الرئيسية.png" alt="القسم الرئيسي">
+                <h3>بوابة العروض الرئيسية</h3>
+                <p style="color: #a0aec0; font-size: 14px;">تصفح سريع وشامل لكافة أقسام وفروع المعرض لسهولة الشراء واقتناء الآلة.</p>
+                <div class="price">تصفح الأقسام</div>
+                <button class="btn-buy">انتقل للرئيسية</button>
             </div>
 
-            <!-- الكرت الثالث: آلة إضافية -->
+            <!-- الكرت الثالث: قسم العروض والخصومات الجارية -->
             <div class="product-card">
-                <img src="العروض الخاصة.png" alt="آلة قانون">
-                <h3>بيانو رقمي ذكي</h3>
-                <p style="color: #a0aec0; font-size: 14px;">مفاتيح حساسة ومؤثرات صوتية متعددة تناسب المساحات الصغيرة.</p>
-                <div class="price">480 دينار أردني</div>
-                <button class="btn-buy">إضافة إلى السلة</button>
+                <img src="العروض الخاصة.png" alt="العروض والتخفيضات">
+                <h3>حزمة العروض والخصومات الخاصة</h3>
+                <p style="color: #a0aec0; font-size: 14px;">احصل على خصومات حصرية تصل إلى 20% عند شراء آلتك الموسيقية المفضلة الآن.</p>
+                <div class="price">خصومات جارية</div>
+                <button class="btn-buy">استكشف العروض</button>
             </div>
 
         </div>
     </section>
 
-    <!-- شريط السلة السفلي المتناسق مع سلة الطلبات المرفوعة -->
+    <!-- الفوتر السفلي المعدل بالأيقونة المرفوعة الصحيحة -->
     <footer>
         <div class="cart-status">
             <span>آلة العود الأصيلة مضافة مسبقاً للطلب</span>
