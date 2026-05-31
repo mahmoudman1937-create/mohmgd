@@ -3,592 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر موسيقاتي - MOSIQATI</title>
+    <title>متجر موسيقاتي - لبيع الآلات الموسيقية</title>
     <style>
-        /* الهوية البصرية ونظام الألوان المتناسق */
-        :root {
-            --primary-blue: #00C5FF; /* مستوحى من لون أزرار التنقل المرفقة */
-            --dark-bg: #0c0f12;
-            --card-bg: #161b22;
-            --text-main: #ffffff;
-            --text-muted: #8b949e;
-            --accent-red: #ff5252;
-        }
-
-        * {
-            box-sizing: border-box;
+        /* التنسيقات العامة المتناسقة مع الألوان الداكنة والأسلوب الأنيق للموقع */
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        body {
-            background-color: var(--dark-bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding-bottom: 100px; /* مساحة لمشغل الموسيقى السفلي */
-        }
-
-        /* الهيدر والشعار ونظام التنقل (Navigation) */
+        /* الهيدر والقائمة العلوية */
         header {
-            background-color: #010409;
-            padding: 10px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--primary-blue);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            padding: 15px 5%;
+            background-color: #070a12;
+            border-bottom: 2px solid #00adef;
         }
 
-        .logo-area img {
-            height: 60px;
-            object-fit: contain;
-            cursor: pointer;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
         }
 
         nav {
             display: flex;
-            gap: 12px;
+            gap: 20px;
             align-items: center;
         }
 
-        .nav-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            transition: transform 0.2s ease, filter 0.2s ease;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-
-        .nav-btn:hover {
-            transform: scale(1.05);
-            filter: brightness(1.1);
-        }
-
-        .nav-btn img {
-            height: 45px;
-            display: block;
-        }
-
-        .nav-text-btn {
-            background-color: transparent;
-            border: 1px solid var(--primary-blue);
-            color: var(--primary-blue);
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            height: 45px;
-            transition: 0.3s;
-        }
-
-        .nav-text-btn:hover {
-            background-color: var(--primary-blue);
-            color: #000;
-        }
-
-        /* الحاوية الرئيسية والصفحات */
-        .main-container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .page-section {
-            display: none; /* إخفاء الصفحات لتفعيل التنقل الفوري */
-            animation: fadeIn 0.4s ease-in-out forwards;
-        }
-
-        .page-section.active-page {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* أدوات ومكونات تفاعلية: واجهة البحث */
-        .search-wrapper {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            border: 1px solid #21262d;
+        nav a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 16px;
             display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
         }
 
-        .search-box {
-            flex: 1;
-            min-width: 250px;
-            position: relative;
+        nav a:hover {
+            color: #00adef;
         }
 
-        input, select, textarea {
-            width: 100%;
-            padding: 12px 15px;
-            background-color: #0d1117;
-            border: 1px solid #30363d;
-            color: #fff;
-            border-radius: 6px;
-            font-size: 14px;
+        nav a img {
+            width: 18px;
+            height: 18px;
         }
 
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--primary-blue);
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 197, 255, 0.3);
+        .btn-contact {
+            background-color: transparent;
+            color: #00adef;
+            border: 2px solid #00adef;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
         }
 
-        /* التنسيق الشبكي والكروت */
-        h2 {
-            color: var(--primary-blue);
-            margin-bottom: 20px;
+        .btn-contact:hover {
+            background-color: #00adef;
+            color: #070a12;
+        }
+
+        /* البانر الترحيبي الرئيسي */
+        .hero-section {
+            max-width: 90%;
+            margin: 40px auto;
+            background: linear-gradient(135deg, #0d1527, #070a12);
+            border: 1px solid #00adef;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 173, 239, 0.1);
+        }
+
+        .hero-section h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .hero-section p {
+            color: #a0aec0;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* قسم معرض الآلات المعروضة للبيع */
+        .products-section {
+            max-width: 90%;
+            margin: 40px auto;
+        }
+
+        .section-title {
             font-size: 24px;
-            border-right: 4px solid var(--primary-blue);
-            padding-right: 10px;
+            color: #00adef;
+            border-right: 4px solid #00adef;
+            padding-right: 15px;
+            margin-bottom: 30px;
         }
 
-        .content-grid {
+        .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 35px;
+            gap: 30px;
         }
 
-        .item-card {
-            background-color: var(--card-bg);
+        .product-card {
+            background-color: #0d1527;
+            border: 1px solid #1e293b;
             border-radius: 10px;
             padding: 20px;
-            border: 1px solid #21262d;
             text-align: center;
-            transition: 0.3s;
-            position: relative;
+            transition: transform 0.3s, border-color 0.3s;
         }
 
-        .item-card:hover {
+        .product-card:hover {
             transform: translateY(-5px);
-            border-color: var(--primary-blue);
+            border-color: #00adef;
         }
 
-        .item-card img {
+        .product-card img {
             width: 100%;
-            height: 180px;
-            object-fit: cover;
+            max-height: 200px;
+            object-fit: contain;
             border-radius: 8px;
             margin-bottom: 15px;
         }
 
-        .action-btn {
-            background-color: var(--primary-blue);
-            color: #000;
+        .product-card h3 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #ffffff;
+        }
+
+        .product-card .price {
+            color: #00adef;
+            font-size: 18px;
             font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .btn-buy {
+            background-color: #00adef;
+            color: #070a12;
             border: none;
             padding: 10px 20px;
-            border-radius: 6px;
+            font-weight: bold;
+            border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px;
-            transition: 0.3s;
             width: 100%;
+            transition: background-color 0.3s;
         }
 
-        .action-btn:hover {
-            background-color: #0099cc;
+        .btn-buy:hover {
+            background-color: #008cc4;
         }
 
-        /* البانر الترويجي والرسوم المتحركة بالفيديو */
-        .promo-header-box {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #010409, #161b22);
-            border-radius: 12px;
-            border: 1px solid var(--primary-blue);
-            margin-bottom: 30px;
-        }
-
-        .promo-video-player {
-            width: 100%;
-            max-width: 700px;
-            border-radius: 8px;
-            box-shadow: 0 0 25px rgba(0, 197, 255, 0.2);
-            margin: 20px 0;
-        }
-
-        /* مشغل الموسيقى السفلي الثابت (Audio Player Bar) */
-        .audio-player-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #010409;
-            border-top: 2px solid var(--primary-blue);
-            padding: 15px 40px;
+        /* الفوتر المتناسق مع سلة المشتريات */
+        footer {
+            background-color: #070a12;
+            border-top: 2px solid #00adef;
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 2000;
+            position: fixed;
+            bottom: 0;
+            width: 90%;
+            left: 5%;
+            box-sizing: border-box;
+            border-radius: 10px 10px 0 0;
         }
 
-        .track-details {
+        .cart-status {
             display: flex;
             align-items: center;
             gap: 15px;
-            min-width: 200px;
         }
 
-        .track-icon {
-            font-size: 28px;
-            background: #161b22;
-            padding: 8px;
-            border-radius: 50%;
-            border: 1px solid var(--primary-blue);
-        }
-
-        .playback-controls-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            width: 45%;
-        }
-
-        .control-btns {
-            display: flex;
-            gap: 25px;
-            font-size: 22px;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .control-btns span:hover {
-            color: var(--primary-blue);
-        }
-
-        .timeline-container {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        .timeline-bar {
-            flex-grow: 1;
-            height: 6px;
-            background-color: #21262d;
-            border-radius: 3px;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .timeline-progress {
-            width: 25%;
-            height: 100%;
-            background-color: var(--primary-blue);
-            border-radius: 3px;
-            transition: width 0.1s linear;
-        }
-
-        .volume-container {
+        .cart-btn {
+            background-color: #0d1527;
+            border: 1px solid #00adef;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
             display: flex;
             align-items: center;
             gap: 10px;
-            min-width: 150px;
-            justify-content: flex-end;
-        }
-
-        .volume-slider {
-            width: 90px;
             cursor: pointer;
         }
 
-        /* نظام النماذج وتواصل معنا */
-        .contact-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; }
-            .contact-layout { grid-template-columns: 1fr; }
-            .audio-player-footer { flex-direction: column; gap: 15px; padding: 15px; text-align: center; }
-            .playback-controls-wrapper { width: 100%; }
-            .volume-container { justify-content: center; }
+        .cart-btn img {
+            width: 20px;
+            height: 20px;
         }
     </style>
 </head>
 <body>
 
+    <!-- الهيدر العلوى بأسماء أيقوناتك المرفوعة تماماً -->
     <header>
-        <div class="logo-area">
-            <img src="الشعار.svg" alt="موسيقاتي" onclick="navigateToPage('home')">
+        <div class="logo-container">
+            <img src="الشعار.svg" alt="موسيقاتي" class="logo-img">
+            <span class="logo-text">موسيقاتي</span>
         </div>
         <nav>
-            <button class="nav-btn" onclick="navigateToPage('home')"><img src="الرئيسية.png" alt="الرئيسية"></button>
-            <button class="nav-btn" onclick="navigateToPage('store')"><img src="المتجر.svg" alt="المتجر"></button>
-            <button class="nav-btn" onclick="navigateToPage('gifts')"><img src="الخدمات.png" alt="الهدايا والخدمات"></button>
-            <button class="nav-btn" onclick="navigateToPage('offers')"><img src="العروض الخاصة.png" alt="العروض"></button>
-            <button class="nav-text-btn" onclick="navigateToPage('about')">من نحن</button>
-            <button class="nav-text-btn" onclick="navigateToPage('contact')" style="background-color: #fff; color: #000; border-color: #fff;">تواصل معنا</button>
+            <a href="#"><img src="الرئيسية.png" alt=""> الرئيسية</a>
+            <a href="#"><img src="المجر.svg" alt=""> معرض الآلات</a>
+            <a href="#"><img src="الهدايا.png" alt=""> العروض الخاصة</a>
+            <a href="#"><img src="من نحن.png" alt=""> من نحن</a>
+            <button class="btn-contact">تواصل معنا</button>
         </nav>
     </header>
 
-    <div class="main-container">
+    <!-- البانر الرئيسي المحدث للمحل -->
+    <section class="hero-section">
+        <h1>مرحباً بكم في متجر موسيقاتي للآلات الموسيقية 🎸</h1>
+        <p>بوابتكم الأولى لاستكشاف واقتناء أجود أنواع الآلات الموسيقية الشرقية والغربية مع كفالة حقيقية وصيانة احترافية في الأردن.</p>
+    </section>
 
-        <section id="home" class="page-section active-page">
-            <div class="promo-header-box">
-                <h1>مرحباً بكم في منصة موسيقاتي الرقمية 🎶</h1>
-                <p style="color: var(--text-muted); margin-top: 10px;">بوابتكم الأولى لاستكشاف عالم الآلات الموسيقية والاستماع الاحترافي في الأردن.</p>
-            </div>
-
-            <h2>أحدث واجهات الاستماع والفنانين المفضلين</h2>
-            <div class="content-grid">
-                <div class="item-card" style="grid-column: 1 / -1;">
-                    <img src="1.jpg" alt="واجهة احدث الاغاني والفنانين المفضلين" style="height: auto; max-height: 400px; object-fit: cover;">
-                    <h3>واجهة الاستماع الذكية</h3>
-                    <p style="color: var(--text-muted); margin-top: 5px;">تصفح سريع ودقيق للأغاني المفضلة والألبومات الحصرية المتوافقة مع كافة المتصفحات.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="store" class="page-section">
-            <h2>المتجر الموسيقي والأقسام</h2>
-            
-            <div class="promo-header-box" style="border-color: #30363d;">
-                <h3 style="color: var(--primary-blue);">🔥 العرض المرئي المتحرك للمتجر</h3>
-                <video class="promo-video-player" controls autoplay loop muted>
-                    <source src="untitled.mp4" type="video/mp4">
-                    متصفحك لا يدعم تشغيل هذا الفيديو.
-                </video>
-                <p style="font-size: 14px; color: var(--text-muted);">رسوم متحركة إعلانية حصرية لآلات متجر موسيقاتي الرقمي.</p>
-            </div>
-
-            <div class="search-wrapper">
-                <div class="search-box">
-                    <input type="text" id="musicSearchInput" onkeyup="filterMusic()" placeholder="🔍 ابحث عن آلة، أغنية، أو فنان...">
-                </div>
-                <div style="flex: 0.5; min-width: 150px;">
-                    <select id="genreSelect" onchange="filterMusic()">
-                        <option value="all">كل الأنواع الموسيقية</option>
-                        <option value="oriental">شرقي الأصيل</option>
-                        <option value="western">غربي حديث</option>
-                        <option value="equipment">معدات استوديو</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="content-grid" id="productsGrid">
-                <div class="item-card" data-genre="oriental">
-                    <img src="2.jpg" alt="منتجات موسيقية متنوعة">
-                    <h3>الآلات الموسيقية المتنوعة</h3>
-                    <p style="color: var(--text-muted); font-size: 14px; margin: 10px 0;">مجموعة واسعة من العود والقيثارات والبيانو والطبول الاحترافية بجودة صوت عالية.</p>
-                    <button class="action-btn" onclick="playSelectedTrack('مقطوعة العود والآلات الحية - أصل متجر موسيقاتي', 'عزف حي')">تشغيل معاينة الصوت ⚡</button>
-                </div>
-
-                <div class="item-card" data-genre="equipment">
-                    <img src="Picture2.png" alt="مخطط مبيعات الأجهزة والآلات الموسيقية">
-                    <h3>الآلات الأكثر طلباً ومبيعاتها</h3>
-                    <p style="color: var(--text-muted); font-size: 14px; margin: 10px 0;">مخطط المبيعات الشهري للآلات الاحترافية كـ (Amplifier, Guitar, Keyboard, Drum Set).</p>
-                    <button class="action-btn" style="background:#21262d; color:#fff; border:1px solid #30363d;">استعراض تقرير الأداء</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="gifts" class="page-section">
-            <h2>قسم الهدايا والكوبونات الموسيقية</h2>
-            <p style="color: var(--text-muted); margin-bottom: 25px;">اختر الهدية المثالية لأصدقائك وعائلتك من الإكسسوارات الفاخرة وكروت الاشتراك مسبقة الدفع.</p>
-            <div class="content-grid">
-                <div class="item-card">
-                    <img src="4.jpg" alt="هدايا موسيقية متنوعة">
-                    <h3>باقات الهدايا التذكارية والكوبونات</h3>
-                    <p style="color: var(--text-muted); font-size: 14px; margin: 10px 0;">كروت هدايا وإكسسوارات موسيقية مخصصة لعشاق الموسيقى والفن الأصيل.</p>
-                    <button class="action-btn">شراء كرت هدية</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="offers" class="page-section">
-            <h2>العروض الخاصة والباقات الحصرية</h2>
-            <p style="color: var(--text-muted); margin-bottom: 25px;">استمتع بأقوى الخصومات والاشتراكات السنوية الفردية والعائلية التي تم إعدادها لتلائم احتياجاتك.</p>
-            <div class="content-grid">
-                <div class="item-card">
-                    <img src="5.jpg" alt="عروض وباقات حصرية">
-                    <h3>باقات التوفير الكبرى والخصومات</h3>
-                    <p style="color: var(--accent-red); font-weight: bold; font-size: 18px;">خصومات حصرية تصل حتى 50% 🔥</p>
-                    <p style="color: var(--text-muted); font-size: 14px; margin: 5px 0;">لفترة محدودة على الاشتراكات الرقمية وأجهزة ومعدات الاستوديو المختار.</p>
-                    <button class="action-btn">احصل على العرض الآن</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="page-section">
-            <h2>من نحن - هوية متجر موسيقاتي</h2>
-            <div class="item-card" style="text-align: right; padding: 30px; display: flex; flex-direction: column; align-items: center; gap: 20px;">
-                <img src="3.jpg" alt="معلومات عن المنصة" style="max-width: 600px; width: 100%; border-radius: 8px; height: auto;">
-                <p style="font-size: 16px; line-height: 1.8; color: #e6edf3; text-align: center; max-width: 800px;">
-                    يسعى متجر <strong>موسيقاتي (MOSIQATI)</strong> الرائد في بيع الآلات الموسيقية في الأردن لتقديم هوية إعلامية وفنية متكاملة من خلال الربط بين توفير المعدات والآلات الموسيقية والمنصات التفاعلية الاستماعية الرقمية لتلبية متطلبات المستخدم العصري ومواكبة تكنولوجيا الصوتيات المتطورة.
-                </p>
-            </div>
-        </section>
-
-        <section id="contact" class="page-section">
-            <h2>تواصل معنا وتقديم الملاحظات</h2>
-            <p style="color: var(--text-muted); margin-bottom: 25px;">نحن هنا للإجابة على استفساراتك وسماع تعليقاتك الثمينة لتطوير الخدمة بشكل مستمر.</p>
-            
-            <div class="contact-layout">
-                <div>
-                    <img src="6.jpg" alt="وسائل تواصل متعددة" style="width: 100%; border-radius: 10px; margin-bottom: 20px;">
-                    <h3 style="margin-bottom: 10px;">تابعنا على وسائل التواصل الاجتماعي</h3>
-                    <p style="color: var(--text-muted); font-size: 14px;">قنواتنا الرسمية متاحة دوماً لمشاركة أحدث الفعاليات، الدروس، والخصومات الموسيقية المتجددة.</p>
-                </div>
-
-                <div style="background-color: var(--card-bg); padding: 25px; border-radius: 10px; border: 1px solid #21262d;">
-                    <h3 style="margin-bottom: 15px; color: var(--primary-blue);">إرسال رسالة أو تقييم وملاحظة</h3>
-                    <form id="userFeedbackForm" onsubmit="processFormSubmission(event)">
-                        <div style="margin-bottom: 15px;">
-                            <label style="display:block; margin-bottom: 5px; color: var(--text-muted);">الاسم:</label>
-                            <input type="text" id="senderName" required placeholder="أدخل اسمك الكريم">
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <label style="display:block; margin-bottom: 5px; color: var(--text-muted);">البريد الإلكتروني:</label>
-                            <input type="email" id="senderEmail" required placeholder="name@example.com">
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <label style="display:block; margin-bottom: 5px; color: var(--text-muted);">نوع المعاملة:</label>
-                            <select id="messageCategory">
-                                <option value="feedback">تقديم ملاحظات لتطوير وتحسين جودة الموقع 🛠️</option>
-                                <option value="inquiry">استفسار عن آلة أو منتج</option>
-                                <option value="support">الدعم الفني والاشتراكات</option>
-                            </select>
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <label style="display:block; margin-bottom: 5px; color: var(--text-muted);">نص الرسالة أو المقترح:</label>
-                            <textarea id="messageBody" rows="4" required placeholder="اكتب مقترحاتك أو استفسارك هنا بكل وضوح..."></textarea>
-                        </div>
-                        <button type="submit" class="action-btn">إرسال تعليقاتك التفاعلية فوراً</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <div class="audio-player-footer">
-        <div class="track-details">
-            <span class="track-icon">🎵</span>
-            <div>
-                <strong id="footerTrackTitle">مقطوعة العود الأصيلة - موسيقاتي</strong>
-                <p id="footerTrackArtist" style="font-size: 12px; color: var(--text-muted);">الفنان: عزف جماعي وتراثي</p>
-            </div>
-        </div>
+    <!-- معرض البيع المربوط بالصور المرفوعة لديك -->
+    <section class="products-section">
+        <h2 class="section-title">أحدث الآلات الموسيقية المتوفرة في المعرض</h2>
         
-        <div class="playback-controls-wrapper">
-            <div class="control-btns">
-                <span>⏮️</span>
-                <span onclick="triggerPlaybackToggle()" id="globalPlayIcon">▶️</span>
-                <span>⏭️</span>
+        <div class="products-grid">
+            
+            <!-- الكرت الأول: آلة العود (باستخدام الصورة المرفوعة Picture2.png كمثال لواجهة العرض) -->
+            <div class="product-card">
+                <img src="Picture2.png" alt="آلة موسيقية مميزة">
+                <h3>عود شرقي احترافي</h3>
+                <p style="color: #a0aec0; font-size: 14px;">خشب زان نقي، صوت دافئ ورنان لعشاق الطرب الأصيل.</p>
+                <div class="price">350 دينار أردني</div>
+                <button class="btn-buy">إضافة إلى السلة</button>
             </div>
-            <div class="timeline-container">
-                <span id="currentTimeLabel">0:45</span>
-                <div class="timeline-bar">
-                    <div class="timeline-progress"></div>
-                </div>
-                <span id="totalTimeLabel">3:20</span>
+
+            <!-- الكرت الثاني: آلة إضافية -->
+            <div class="product-card">
+                <img src="الرئيسية.png" alt="جيتار كلاسيك">
+                <h3>جيتار صوتي كلاسيكي</h3>
+                <p style="color: #a0aec0; font-size: 14px;">أوتار مريحة وهيكل متين ممتاز للمبتدئين والمحترفين.</p>
+                <div class="price">120 دينار أردني</div>
+                <button class="btn-buy">إضافة إلى السلة</button>
             </div>
+
+            <!-- الكرت الثالث: آلة إضافية -->
+            <div class="product-card">
+                <img src="العروض الخاصة.png" alt="آلة قانون">
+                <h3>بيانو رقمي ذكي</h3>
+                <p style="color: #a0aec0; font-size: 14px;">مفاتيح حساسة ومؤثرات صوتية متعددة تناسب المساحات الصغيرة.</p>
+                <div class="price">480 دينار أردني</div>
+                <button class="btn-buy">إضافة إلى السلة</button>
+            </div>
+
         </div>
+    </section>
 
-        <div class="volume-container">
-            <span style="font-size: 14px; color: var(--text-muted);">🔊 الصوت</span>
-            <input type="range" class="volume-slider" min="0" max="100" value="80" oninput="adjustVolumeLevel(this.value)">
+    <!-- شريط السلة السفلي المتناسق مع سلة الطلبات المرفوعة -->
+    <footer>
+        <div class="cart-status">
+            <span>آلة العود الأصيلة مضافة مسبقاً للطلب</span>
         </div>
-    </div>
+        <button class="cart-btn">
+            <img src="سلة الطلبات.png" alt="السلة">
+            <span>عرض سلة المشتريات (1)</span>
+        </button>
+    </footer>
 
-    <script>
-        // دالة التنقل الفوري البديهي بين الـ 5 صفحات المطلوبة وأكثر
-        function navigateToPage(pageId) {
-            // إخفاء كافة أقسام الصفحات
-            const allPages = document.querySelectorAll('.page-section');
-            allPages.forEach(p => p.classList.remove('active-page'));
-            
-            // تفعيل وإظهار الصفحة المراد الانتقال إليها
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.classList.add('active-page');
-            }
-            // التمرير التلقائي السلس لأعلى الصفحة لسهولة العرض والتحميل السريع
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // دالة التحكم في تشغيل وإيقاف الموسيقى وإبراز الخصائص الوظيفية للمشغل
-        let trackIsPlaying = false;
-        function triggerPlaybackToggle() {
-            const playIconElement = document.getElementById('globalPlayIcon');
-            trackIsPlaying = !trackIsPlaying;
-            if (trackIsPlaying) {
-                playIconElement.innerText = '⏸️';
-                alert('تم بدء تشغيل مستمر بدون تقطيع للمقطوعة المختارة بنجاح 🎶');
-            } else {
-                playIconElement.innerText = '▶️';
-            }
-        }
-
-        // دالة اختيار وتشغيل تراك مخصص من قائمة المنتجات بالمتجر
-        function playSelectedTrack(title, artist) {
-            document.getElementById('footerTrackTitle').innerText = title;
-            document.getElementById('footerTrackArtist').innerText = "الفنان: " + artist;
-            trackIsPlaying = false;
-            triggerPlaybackToggle();
-        }
-
-        // دالة التحكم التفاعلي بمستوى الصوت
-        function adjustVolumeLevel(volumeValue) {
-            console.log("مستوى صوت المشغل الحالي تم ضبطه على: " + volumeValue + "%");
-        }
-
-        // نظام الفلترة والبحث السريع والدقيق حسب متطلبات المستخدم (اسم الآلة / النوع)
-        function filterMusic() {
-            const filterText = document.getElementById('musicSearchInput').value.toLowerCase();
-            const chosenGenre = document.getElementById('genreSelect').value;
-            const cards = document.querySelectorAll('#productsGrid .item-card');
-
-            cards.forEach(card => {
-                const cardTitle = card.querySelector('h3').innerText.toLowerCase();
-                const cardText = card.querySelector('p').innerText.toLowerCase();
-                const cardGenre = card.getAttribute('data-genre');
-
-                const matchesSearch = cardTitle.includes(filterText) || cardText.includes(filterText);
-                const matchesGenre = (chosenGenre === 'all') || (cardGenre === chosenGenre);
-
-                if (matchesSearch && matchesGenre) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // دالة استقبال معالجة وحفظ الملاحظات والتعليقات (Feedback) لتطوير الموقع وتحسين جودته وملاءمته
-        function processFormSubmission(event) {
-            event.preventDefault();
-            const userName = document.getElementById('senderName').value;
-            const selectedType = document.getElementById('messageCategory').value;
-            
-            if (selectedType === 'feedback') {
-                alert(`شكراً جزيلاً لك يا ${userName}! تم استلام وتحليل ملاحظاتك ومقترحاتك الثمينة بنجاح. سنستخدمها فوراً لتطوير وتحسين جودة وملاءمة موقع "موسيقاتي" بما يلبي تطلعاتكم وعرض التغييرات في تقرير الأساس المنطقي.`);
-            } else {
-                alert(`مرحباً يا ${userName}، تم إرسال رسالتك بنجاح لطاقم متجر موسيقاتي الرقمي وسنقوم بالرد عليك في أقرب وقت.`);
-            }
-            
-            document.getElementById('userFeedbackForm').reset();
-        }
-    </script>
 </body>
 </html>
